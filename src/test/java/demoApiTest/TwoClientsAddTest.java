@@ -19,6 +19,7 @@ public class TwoClientsAddTest extends BaseTest {
     @Order(1)
     @Test
     public void addTwoClientsWithPostTest() {
+
         actualClientsList = testUtils.getClientsList();
         StandardResponse receivedResponseBodyFirst = testUtils
                 .addClientPostRequest(testUserNameValue1, testFullNameValue1, 200);
@@ -26,8 +27,8 @@ public class TwoClientsAddTest extends BaseTest {
         StandardResponse receivedResponseBodySecond = testUtils
                 .addClientPostRequest(testUserNameValue2, testFullNameValue2, 200);
 
-        Assertions.assertEquals(ResultCode.Ok, receivedResponseBodyFirst);
-        Assertions.assertEquals(ResultCode.Ok, receivedResponseBodySecond);
+        Assertions.assertEquals(ResultCode.Ok, receivedResponseBodyFirst.getResultCode());
+        Assertions.assertEquals(ResultCode.Ok, receivedResponseBodySecond.getResultCode());
     }
 
     @Order(2)

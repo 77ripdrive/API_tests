@@ -4,7 +4,6 @@ import model.Client;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.Timeout;
 import testUtils.TestUtils;
 
 import java.io.IOException;
@@ -22,12 +21,13 @@ public class BaseTest {
     public void setup() {
         testUtils = new TestUtils();
         try {
-           process = Runtime.getRuntime ().exec ("java -jar src/test/resources/hello-world-challenge-runner.jar");
+            process = Runtime.getRuntime()
+                    .exec("java -jar src/test/resources/hello-world-challenge-runner.jar");
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -37,6 +37,6 @@ public class BaseTest {
     public void afterTest() {
         client = null;
         sessionId = null;
-        process.destroy ();
+        process.destroy();
     }
 }
