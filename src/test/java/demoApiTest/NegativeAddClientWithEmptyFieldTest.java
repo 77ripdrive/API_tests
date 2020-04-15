@@ -25,7 +25,9 @@ public class NegativeAddClientWithEmptyFieldTest extends BaseTest {
                 .body(client)
                 .post("http://localhost:8080/challenge/clients")
                 .then()
+                .assertThat()
                 .statusCode(500)
+                .and()
                 .extract()
                 .body().as(StandardResponse.class);
 
@@ -42,7 +44,9 @@ public class NegativeAddClientWithEmptyFieldTest extends BaseTest {
                 .body(client)
                 .post("http://localhost:8080/challenge/clients")
                 .then()
+                .assertThat()
                 .statusCode(500)
+                .and()
                 .extract()
                 .body().as(StandardResponse.class);
         Assertions.assertEquals(ResultCode.UnexpectedError, response.getResultCode());

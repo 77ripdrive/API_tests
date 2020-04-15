@@ -25,7 +25,9 @@ public class TestUtils {
                 .when()
                 .get("http://localhost:8080/challenge/clients")
                 .then()
+                .assertThat()
                 .statusCode(200)
+                .and()
                 .extract()
                 .body().as(GetClientResponse.class);
     }
@@ -38,7 +40,9 @@ public class TestUtils {
                 .body(client)
                 .post("http://localhost:8080/challenge/clients")
                 .then()
+                .assertThat()
                 .statusCode(statusCode)
+                .and()
                 .extract()
                 .body().as(StandardResponse.class);
         return response;

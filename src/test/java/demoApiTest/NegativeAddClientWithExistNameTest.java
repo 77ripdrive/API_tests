@@ -27,6 +27,7 @@ public class NegativeAddClientWithExistNameTest extends BaseTest {
         StandardResponse receivedResponseBody =testUtils
                 .addClientPostRequest(testUserName,testFullName,500);
 
+//        Assertions.assertEquals(ResultCode.UserAlreadyExists, receivedResponseBody.getResultCode())
         Assertions.assertEquals(ResultCode.UnexpectedError, receivedResponseBody.getResultCode());
     }
 }

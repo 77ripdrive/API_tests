@@ -20,7 +20,9 @@ public class NegativeLoginTest extends BaseTest {
                 .body(testUtils.jsonUserNameBuilder(testUserNameValueWithOutRegistration))
                 .post("http://localhost:8080/challenge/login")
                 .then()
+                .assertThat()
                 .statusCode(500)
+                .and()
                 .extract()
                 .header("X-Session-Id");
 

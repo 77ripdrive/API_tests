@@ -26,7 +26,9 @@ public class End2EndClientTest extends BaseTest {
                 .body(this.client)
                 .post("http://localhost:8080/challenge/clients")
                 .then()
+                .assertThat()
                 .statusCode(200)
+                .and()
                 .extract()
                 .body().as(StandardResponse.class);
 
@@ -40,7 +42,9 @@ public class End2EndClientTest extends BaseTest {
                 .when()
                 .get("http://localhost:8080/challenge/clients")
                 .then()
+                .assertThat()
                 .statusCode(200)
+                .and()
                 .extract()
                 .body().as(GetClientResponse.class);
 
@@ -58,7 +62,9 @@ public class End2EndClientTest extends BaseTest {
                 .body(testUtils.jsonUserNameBuilder(testUserName))
                 .post("http://localhost:8080/challenge/login")
                 .then()
+                .assertThat()
                 .statusCode(200)
+                .and()
                 .extract()
                 .header("X-Session-Id");
 
@@ -73,7 +79,9 @@ public class End2EndClientTest extends BaseTest {
                 .header("X-Session-Id", this.sessionId)
                 .get("http://localhost:8080/challenge/hello")
                 .then()
+                .assertThat()
                 .statusCode(200)
+                .and()
                 .extract()
                 .body().as(HelloResponse.class);
 
@@ -91,7 +99,9 @@ public class End2EndClientTest extends BaseTest {
                 .body(testUtils.jsonUserNameBuilder(testUserName))
                 .post("http://localhost:8080/challenge/logout")
                 .then()
+                .assertThat()
                 .statusCode(200)
+                .and()
                 .extract()
                 .body().as(StandardResponse.class);
 
