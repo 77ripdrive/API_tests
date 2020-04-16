@@ -3,20 +3,21 @@ package testUtils;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import response.GetClientResponse;
 import response.StandardResponse;
-
-import java.util.ArrayList;
 
 import static io.restassured.RestAssured.given;
 
 public class TestUtils {
 
     public String jsonUserNameBuilder(String username) {
+
         return String.format("{\"username\":\"%s\"}", username);
     }
 
     public String jsonClientBuilder(String username, String fullName) {
+
         return String.format("{\"fullName\":\"%s\",\"username\":\"%s\"}", username, fullName);
     }
 
@@ -48,17 +49,12 @@ public class TestUtils {
         return response;
     }
 
-    public String setClient(String username, String fullName) {
-        return String.format("username=%s&fullName=%s", username, fullName);
-    }
-
     public JsonPath getJsonPath(Response response) {
         String json = response.asString();
         return new JsonPath(json);
     }
 
-    public ArrayList getClients(JsonPath jsonPath) {
-        ArrayList clientList = jsonPath.get();
-        return clientList;
+    public void statusCodeVerification(Response response, int statusCode) {
+        Assertions.assertEquals(statusCode, response.getStatusCode());
     }
 }

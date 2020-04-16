@@ -1,5 +1,7 @@
 package demoApiTest;
 
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import model.Client;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,6 +18,8 @@ public class BaseTest {
     protected Client client = null;
     protected String sessionId = null;
     protected Process process;
+    protected Response response ;
+    protected JsonPath jsonPath ;
 
     @BeforeAll
     public void setup() {
@@ -35,8 +39,6 @@ public class BaseTest {
 
     @AfterAll
     public void afterTest() {
-        client = null;
-        sessionId = null;
         process.destroy();
     }
 }
